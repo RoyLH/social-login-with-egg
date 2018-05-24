@@ -42,7 +42,6 @@
 
 <body>
     <div id="container">
-        <!-- <section ng-include="'core/views/core.client.view.html'"></section> -->
         <section ng-view></section>
     </div>
 
@@ -50,34 +49,21 @@
         window.user = <%- user || 'null' %>;
     </script>
 
-    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="/lib/angular/angular.js"></script>
-    <script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
-    <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
+    <script type="text/javascript" src="public/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="public/lib/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="public/lib/angular-resource/angular-resource.js"></script>
 
     <!--core module-->
-    <script type="text/javascript" src="/core/core.client.module.js"></script>
-    <script type="text/javascript" src="/core/controllers/core.client.controller.js"></script>
-    <script type="text/javascript" src="/core/config/core.client.routes.js"></script>
+    <script type="text/javascript" src="public/core/core.client.module.js"></script>
+    <script type="text/javascript" src="public/core/controllers/core.client.controller.js"></script>
+    <script type="text/javascript" src="public/core/config/core.client.routes.js"></script>
 
     <!--users module-->
-    <script type="text/javascript" src="/users/users.client.module.js"></script>
-    <script type="text/javascript" src="/users/services/authentication.client.service.js"></script>
-
-    <!--articles module-->
-    <script type="text/javascript" src="/articles/articles.client.module.js"></script>
-    <script type="text/javascript" src="/articles/controllers/articles.client.controller.js"></script>
-    <script type="text/javascript" src="/articles/services/articles.client.service.js"></script>
-    <script type="text/javascript" src="/articles/config/articles.client.routes.js"></script>
-
-    <!--chat module-->
-    <script type="text/javascript" src="/chat/chat.client.module.js"></script>
-    <script type="text/javascript" src="/chat/controllers/chat.client.controller.js"></script>
-    <script type="text/javascript" src="/chat/services/chat.client.service.js"></script>
-    <script type="text/javascript" src="/chat/config/chat.client.routes.js"></script>
+    <script type="text/javascript" src="public/users/users.client.module.js"></script>
+    <script type="text/javascript" src="public/users/services/authentication.client.service.js"></script>
 
     <!--Bootstrap AngularJS Application-->
-    <script type="text/javascript" src="/application.js"></script>
+    <script type="text/javascript" src="public/application.js"></script>
 </body>
 
 </html>
