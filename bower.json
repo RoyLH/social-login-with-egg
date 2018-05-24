@@ -1,0 +1,23 @@
+{
+  "name": "social-login-with-egg",
+  "description": "",
+  "main": "",
+  "authors": [
+    "liuheng <liuheng@yidian-inc.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/RoyLH/social-login-with-egg",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.7.0",
+    "angular-route": "^1.7.0",
+    "angular-resource": "^1.7.0",
+    "angular-mocks": "^1.7.0"
+  }
+}
