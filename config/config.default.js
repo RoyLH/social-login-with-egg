@@ -24,7 +24,7 @@ module.exports = appInfo => {
   // add your config here
   config.middleware = [];
 
-  config.views = {
+  config.view = {
     defaultViewEngine: 'nunjucks',
     mapping: {
       '.ejs': 'ejs'
@@ -44,8 +44,8 @@ module.exports = appInfo => {
   };
 
   config.passportLocal = {
-    usernameField: 'name',
-    passwordField: 'pass',
+    usernameField: 'username',
+    passwordField: 'password',
   };
 
   return config;

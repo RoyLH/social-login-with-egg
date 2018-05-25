@@ -2,26 +2,29 @@
 
 module.exports = app => {
 
-    const { router, controller, passport } = app;
+    const { router, controller, config, middleware, passport } = app;
 
-    router.get('/users', controller.user.index);
-    router.get('/users', controller.user.create);
+    const { index, user } = controller;
 
-    router.get('users/:userId', controller.user.read);
-    router.put('users/:userId', controller.user.update);
-
-    router.get('/signup', controller.user.renderSignup);
-    router.post('/signup', controller.user.signup);
-
-    router.get('/signin', controller.user.renderSignin);
-    router.post('/signin', passport.authenticate('local', {
+    const localStrategy = passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/signin',
         failureFlash: true
-    }));
+    });
 
-    router.get('/signout', controller.user.signout);
+    router.get('/users', user.list);
+    router.get('/users', user.create);
 
-    app.param('userId', controller.user.userByID);    
+    // router.get('users/:userId', user.read);
+    // router.put('users/:userId', user.update);
 
+    // router.get('/signup', user.renderSignup);
+    // router.post('/signup', user.signup);
+
+    // router.get('/signin', user.renderSignin);
+    // router.post('/signin', localStrategy);
+
+    // router.get('/signout', user.signout);
+
+    // app.param('userId', user.userByID);    
 };

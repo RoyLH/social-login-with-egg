@@ -3,9 +3,28 @@
 const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
-  async index() {
-    this.ctx.body = 'hi, egg';
-  }
+    async render() {
+        const { ctx } = this;
+
+        if (ctx.session.lastVisit) {
+
+            console.log('========== ctx.session.lastVisit ==========');
+            console.log(ctx.session.lastVisit);
+
+            console.log('========== ctx.session ==========');
+            console.log(ctx.session);
+
+            console.log('========== ctx.user ==========');
+            console.log(ctx.user);
+        }
+
+        ctx.session.lastVisit = new Date();
+
+        await ctx.render('index.ejs', {
+            title: 'Hello world',
+            user: JSON.stringify(ctx.user)
+        });
+    }
 }
 
 module.exports = HomeController;
