@@ -1,4 +1,5 @@
 'use strict';
+const path = require('path');
 
 module.exports = appInfo => {
   const config = exports = {};
@@ -29,6 +30,11 @@ module.exports = appInfo => {
     mapping: {
       '.ejs': 'ejs'
     }
+  };
+
+  config.static = {
+    prefix: '/',
+    dir: path.join(appInfo.baseDir, 'app/public')
   };
 
   // config.siteFile = {
