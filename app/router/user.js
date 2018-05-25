@@ -18,10 +18,10 @@ module.exports = app => {
     // router.get('users/:userId', user.read);
     // router.put('users/:userId', user.update);
 
-    // router.get('/signup', user.renderSignup);
+    router.get('/signup', user.renderSignup);
     // router.post('/signup', user.signup);
 
-    // router.get('/signin', user.renderSignin);
+    router.get('/signin', user.renderSignin);
     // router.post('/signin', localStrategy);
 
     // router.get('/signout', user.signout);

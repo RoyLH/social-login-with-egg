@@ -5,21 +5,25 @@ const Controller = require('egg').Controller;
 class UserController extends Controller {
 
     async renderSignup() {
-        if (!req.user) {
-            res.render('signup', {
-                title: 'Sign-up Form',
-                messages: req.flash('error')
+        const { ctx } = this;
+
+        if (!ctx.user) {
+            await ctx.render('signup.ejs', {
+                title: 'Sign-up Form'
+                // messages: req.flash('error')
             });
         } else {
-            return res.redirect('/');
+            return ctx.redirect('/');
         }
     }
 
     async renderSignin() {
-        if (!req.user) {
-            res.render('signin', {
-                title: 'Sign-in Form',
-                messages: req.flash('error') || req.flash('info')
+        const { ctx } = this;
+
+        if (!ctx.user) {
+            await ctx.render('signin.ejs', {
+                title: 'Sign-in Form'
+                // messages: req.flash('error') || req.flash('info')
             });
         } else {
             return res.redirect('/');

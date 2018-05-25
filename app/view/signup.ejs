@@ -65,31 +65,27 @@
 </head>
 
 <body>
-    <% for(var i in messages) { %>
-        <div class="flash">
-            <%= messages[i] %>
+
+    <form action="/signup" method="post" class="signup-form">
+        <div>
+            <input type="text" name="firstName" placeholder="First Name">
         </div>
-        <% } %>
-            <form action="/signup" method="post" class="signup-form">
-                <div>
-                    <input type="text" name="firstName" placeholder="First Name">
-                </div>
-                <div>
-                    <input type="text" name="lastName" placeholder="Last Name">
-                </div>
-                <div>
-                    <input type="text" name="email" placeholder="Email">
-                </div>
-                <div>
-                    <input type="text" name="username" placeholder="Username">
-                </div>
-                <div>
-                    <input type="password" name="password" placeholder="Password">
-                </div>
-                <div>
-                    <input type="submit" value="Sign up" class="submit-button">
-                </div>
-            </form>
+        <div>
+            <input type="text" name="lastName" placeholder="Last Name">
+        </div>
+        <div>
+            <input type="text" name="email" placeholder="Email">
+        </div>
+        <div>
+            <input type="text" name="username" placeholder="Username">
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="Password">
+        </div>
+        <div>
+            <input type="submit" value="Sign up" class="submit-button">
+        </div>
+    </form>
 </body>
 
 </html>
