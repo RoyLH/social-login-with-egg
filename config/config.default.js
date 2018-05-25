@@ -45,8 +45,10 @@ module.exports = appInfo => {
    * @see http://mongodb.github.io/node-mongodb-native/2.2/api/Db.html#createCollection
    */
   config.mongoose = {
-    url: process.env.EGG_MONGODB_URL || 'mongodb://127.0.0.1:27017/egg_cnode',
-    options: {},
+    client: {
+      url: process.env.EGG_MONGODB_URL || 'mongodb://127.0.0.1:27017/social-login-with-egg',
+      options: {}
+    }
   };
 
   config.passportLocal = {

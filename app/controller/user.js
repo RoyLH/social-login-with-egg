@@ -40,6 +40,8 @@ class UserController extends Controller {
             try {
                 const user = await service.user.signup(body);
 
+                console.log(user);
+
                 ctx.login(user)
                     .then(user => {
                         return ctx.redirect('/');
