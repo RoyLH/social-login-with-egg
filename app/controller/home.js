@@ -20,7 +20,7 @@ class HomeController extends Controller {
 
         ctx.session.lastVisit = new Date();
 
-        await ctx.render('index.ejs', {
+        await ctx.render('index', {
             title: 'Hello world',
             user: JSON.stringify(ctx.user)
         });

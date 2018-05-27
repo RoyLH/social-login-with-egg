@@ -27,6 +27,7 @@ module.exports = appInfo => {
 
   config.view = {
     defaultViewEngine: 'nunjucks',
+    defaultExtension: '.ejs',
     mapping: {
       '.ejs': 'ejs'
     }

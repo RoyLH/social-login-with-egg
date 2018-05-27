@@ -22,3 +22,7 @@ exports.passportLocal = {
     enable: true,
     package: 'egg-passport-local',
 };
+
+// exports.security = {
+//     enable: false
+// };

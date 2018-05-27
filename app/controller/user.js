@@ -8,7 +8,7 @@ class UserController extends Controller {
         const { ctx } = this;
 
         if (!ctx.user) {
-            await ctx.render('signup.ejs', {
+            await ctx.render('signup', {
                 title: 'Sign-up Form'
                 // messages: req.flash('error')
             });
@@ -21,7 +21,7 @@ class UserController extends Controller {
         const { ctx } = this;
 
         if (!ctx.user) {
-            await ctx.render('signin.ejs', {
+            await ctx.render('signin', {
                 title: 'Sign-in Form'
                 // messages: req.flash('error') || req.flash('info')
             });
@@ -31,8 +31,10 @@ class UserController extends Controller {
     }
 
     async signup() {
+                
+        console.log('////////////////////////////');
+        const { ctx, service } = this;
         if (!ctx.user) {
-            const { ctx, service } = this;
             const body = ctx.request.body;
             let user = new User(req.body);
             user.provider = 'local';
@@ -40,7 +42,6 @@ class UserController extends Controller {
             try {
                 const user = await service.user.signup(body);
 
-                console.log(user);
 
                 ctx.login(user)
                     .then(user => {
