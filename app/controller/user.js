@@ -38,14 +38,12 @@ class UserController extends Controller {
             body.provider = 'local';
             
             try {
-                console.log('[[[[[[[[[[[[[[');
                 const user = await service.user.signup(body);
 
-                console.log(user);
-                
                 ctx.login(user)
                     .then(user => {
-                        return ctx.redirect('/');
+                        ctx.as = 'ass';
+                        ctx.redirect('/');
                     })
                     .catch(err => {
                         return ctx.redirect('/signup');

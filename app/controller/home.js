@@ -16,6 +16,7 @@ class HomeController extends Controller {
 
             console.log('========== ctx.user ==========');
             console.log(ctx.user);
+            
         }
 
         ctx.session.lastVisit = new Date();

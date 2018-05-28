@@ -38,10 +38,14 @@ module.exports = app => {
         return existsUser;
     };
 
+    // This is the most important, without this, we can not get by ctx.user in '/' path.
     passport.serializeUser(async(ctx, user) => {
-
+        // return user;
+        return ctx.user;
     });
+
     passport.deserializeUser(async (ctx, user) => {
+        console.log('...............................');
         const { User } = ctx.model;
         User.findOne({
             _id: user._id
