@@ -32,17 +32,17 @@ class UserController extends Controller {
 
     async signup() {
                 
-        console.log('////////////////////////////');
         const { ctx, service } = this;
         if (!ctx.user) {
             const body = ctx.request.body;
-            let user = new User(req.body);
-            user.provider = 'local';
+            body.provider = 'local';
             
             try {
+                console.log('[[[[[[[[[[[[[[');
                 const user = await service.user.signup(body);
 
-
+                console.log(user);
+                
                 ctx.login(user)
                     .then(user => {
                         return ctx.redirect('/');
@@ -55,7 +55,7 @@ class UserController extends Controller {
                     success: false,
                     message: err.message,
                 };
-                return res.redirect('/signup');
+                return ctx.redirect('/signup');
                 
             }
         } else {
@@ -64,8 +64,8 @@ class UserController extends Controller {
     }
 
     async signout() {
-        req.logout();
-        return res.redirect('/');
+        ctx.logout();
+        return ctx.redirect('/');
     }
 
     async create() {
