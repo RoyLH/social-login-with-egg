@@ -40,16 +40,14 @@ module.exports = app => {
 
     
     passport.serializeUser(async(ctx, user) => {
-        return user; // Tip: this is important, without 'return user', ctx.user is undefined in '/' path.
+        return user; 
+        // ctx.session.passport.user 也就是 ctx.user
+        // 如果没有 'return user', '/' 路路径下的 ctx.user 就是 undefined
     });
 
     passport.deserializeUser(async (ctx, user) => {
-        console.log('...............................');
-        const { User } = ctx.model;
-        User.findOne({
-            _id: user._id
-        }, '-passport -salt').exec();
-
-        return user;
+        return user; 
+        // ctx.session.passport.user 也就是 ctx.user
+        // 如果没有 'return user', '/' 路路径下的 ctx.user 就是 undefined
     });
 };

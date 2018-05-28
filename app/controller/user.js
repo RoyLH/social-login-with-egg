@@ -31,8 +31,8 @@ class UserController extends Controller {
     }
 
     async signup() {
-                
         const { ctx, service } = this;
+        
         if (!ctx.user) {
             const body = ctx.request.body;
             body.provider = 'local';
@@ -61,6 +61,8 @@ class UserController extends Controller {
     }
 
     async signout() {
+        const { ctx } = this;
+
         ctx.logout();
         return ctx.redirect('/');
     }

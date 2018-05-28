@@ -4,7 +4,7 @@ module.exports = app => {
 
     const { router, controller, config, middleware, passport } = app;
 
-    const { index, user } = controller;
+    const { user } = controller;
 
     const localStrategy = passport.authenticate('local', {
         successRedirect: '/',
@@ -24,7 +24,7 @@ module.exports = app => {
     router.get('/signin', user.renderSignin);
     router.post('/signin', localStrategy);
 
-    // router.get('/signout', user.signout);
+    router.get('/signout', user.signout);
 
     // app.param('userId', user.userByID);    
 };
