@@ -40,7 +40,7 @@ module.exports = app => {
 
     
     passport.serializeUser(async(ctx, user) => {
-        return user; // Tip: this is important, without 'return user', we can not get by ctx.user in '/' path.
+        return user; // Tip: this is important, without 'return user', ctx.user is undefined in '/' path.
     });
 
     passport.deserializeUser(async (ctx, user) => {

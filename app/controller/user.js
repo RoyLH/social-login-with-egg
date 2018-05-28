@@ -42,7 +42,6 @@ class UserController extends Controller {
 
                 ctx.login(user)
                     .then(user => {
-                        ctx.as = 'ass';
                         ctx.redirect('/');
                     })
                     .catch(err => {
