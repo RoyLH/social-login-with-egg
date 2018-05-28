@@ -38,10 +38,9 @@ module.exports = app => {
         return existsUser;
     };
 
-    // This is the most important, without this, we can not get by ctx.user in '/' path.
+    
     passport.serializeUser(async(ctx, user) => {
-        // return user;
-        return ctx.user;
+        return user; // Tip: this is important, without 'return user', we can not get by ctx.user in '/' path.
     });
 
     passport.deserializeUser(async (ctx, user) => {
