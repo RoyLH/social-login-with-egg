@@ -36,7 +36,7 @@ angular.module('articles').controller('ArticlesController', [ '$scope', '$routeP
 
   $scope.delete = function(article) {
     if (article) {
-      article.$remove(function() {
+      article.$remove(function(params) {
         for (const i in $scope.articles) {
           if ($scope.article[i] === article) {
             $scope.article.splice(i, 1);

@@ -10,11 +10,11 @@ describe('Testing Articles Controller', function() {
     jasmine.addMatchers({
       toEqualData(util, customEqualityTesters) {
         return {
-          compare(actual, expected) {
-            return {
-              pass: angular.equals(actual, expected),
-            };
-          },
+          compare (actual, expected) {
+                        return {
+                            pass: angular.equals(actual, expected)
+                        };
+                    },
         };
       },
     });

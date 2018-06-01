@@ -4,7 +4,7 @@ angular.module('articles').controller('ArticlesController', [ '$scope', '$routeP
   $scope.authentication = Authentication;
 
   $scope.create = function() {
-    const article = new Articles({
+    let article = new Articles({
       title: this.title,
       content: this.content,
     });
@@ -36,8 +36,8 @@ angular.module('articles').controller('ArticlesController', [ '$scope', '$routeP
 
   $scope.delete = function(article) {
     if (article) {
-      article.$remove(function() {
-        for (const i in $scope.articles) {
+      article.$remove(function(params) {
+        for (let i in $scope.articles) {
           if ($scope.article[i] === article) {
             $scope.article.splice(i, 1);
           }

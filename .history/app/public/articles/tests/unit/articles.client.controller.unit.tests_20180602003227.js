@@ -1,22 +1,22 @@
 'use strict';
 
 describe('Testing Articles Controller', function() {
-  let _scope,
-    ArticlesController;
+  let _scope, 
+ArticlesController;
 
   beforeEach(function() {
     module('mean');
 
     jasmine.addMatchers({
-      toEqualData(util, customEqualityTesters) {
-        return {
-          compare(actual, expected) {
-            return {
-              pass: angular.equals(actual, expected),
-            };
-          },
-        };
-      },
+      toEqualData (util, customEqualityTesters) {
+                return {
+                    compare: function (actual, expected) {
+                        return {
+                            pass: angular.equals(actual, expected)
+                        };
+                    }
+                };
+            },
     });
 
     inject(function($rootScope, $controller) {
@@ -29,11 +29,11 @@ describe('Testing Articles Controller', function() {
 
   it('Should have a find method that uses $resource to retrieve a list if articles', inject(function(Articles) {
     inject(function($httpBackend) {
-      const sampleArticle = new Articles({
+      let sampleArticle = new Articles({
         title: 'An Article about MEAN',
         content: 'MEAN rocks!',
       });
-      const sampleArticles = [ sampleArticle ];
+      let sampleArticles = [ sampleArticle ];
       $httpBackend.expectGET('/api/articles').respond(sampleArticles);
 
       _scope.find();
@@ -44,7 +44,7 @@ describe('Testing Articles Controller', function() {
 
   it('Should have a findOne method that users $resource to retrieve a single if article', inject(function(Articles) {
     inject(function($httpBackend, $routeParams) {
-      const sampleArticle = new Articles({
+      let sampleArticle = new Articles({
         title: 'An Article about MEAN',
         content: 'MEAN rocks!',
       });

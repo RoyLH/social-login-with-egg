@@ -29,13 +29,13 @@ module.exports = appInfo => {
     defaultViewEngine: 'nunjucks',
     defaultExtension: '.ejs',
     mapping: {
-      '.ejs': 'ejs',
-    },
+      '.ejs': 'ejs'
+    }
   };
 
   config.static = {
     prefix: '/',
-    dir: path.join(appInfo.baseDir, 'app/public'),
+    dir: path.join(appInfo.baseDir, 'app/public')
   };
 
   // config.siteFile = {
@@ -48,8 +48,8 @@ module.exports = appInfo => {
   config.mongoose = {
     client: {
       url: process.env.EGG_MONGODB_URL || 'mongodb://127.0.0.1:27017/social-login-with-egg',
-      options: {},
-    },
+      options: {}
+    }
   };
 
   config.passportLocal = {
