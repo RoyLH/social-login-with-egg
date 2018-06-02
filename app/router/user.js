@@ -2,7 +2,7 @@
 
 module.exports = app => {
 
-  const { router, controller, config, middleware, passport } = app;
+  const { router, controller, passport } = app;
 
   const { user } = controller;
 
@@ -15,8 +15,9 @@ module.exports = app => {
   router.get('/users', user.list);
   router.post('/users', user.create);
 
-  // router.get('users/:userId', user.read);
+  router.get('users/:userId', user.read);
   // router.put('users/:userId', user.update);
+  // router.del('users/:userId', user.delete);
 
   router.get('/signup', user.renderSignup);
   router.post('/signup', user.signup);
@@ -26,5 +27,5 @@ module.exports = app => {
 
   router.get('/signout', user.signout);
 
-  // app.param('userId', user.userByID);
+  router.param('userId', user.userByID);
 };

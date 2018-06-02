@@ -70,6 +70,9 @@ class UserController extends Controller {
   async create() {
     const { ctx, service } = this;
     const body = ctx.request.body;
+    console.log('lllllllllllllllll');
+    console.log(ctx.csrf);
+    body._csrf = ctx.csrf;
     const user = await service.user.create(body);
 
     ctx.body = {
@@ -95,6 +98,14 @@ class UserController extends Controller {
   // async read() {
   //     return res.json(req.user);
   // }
+
+  async read() {
+    const { ctx } = this;
+    ctx.body = {
+      success: true,
+      user: ctx.user,
+    };
+  }
 
   // async update() {
   //     User.findByIdAndUpdate(req.user._id, req.body) // 注意这里req.user.id 和 req.user._id都是可以的
@@ -136,6 +147,21 @@ class UserController extends Controller {
   //             });
   //         });
   // }
+
+  async userByID(ctx, next) {
+    const { service } = this;
+    const userId = ctx.params.userId;
+
+    const user = await service.user.userByID(userId);
+
+    if (user) {
+      ctx.user = user;
+      next();
+    }
+
+    return;
+
+  }
 }
 
 module.exports = UserController;
