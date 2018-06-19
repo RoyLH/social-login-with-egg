@@ -1,53 +1,48 @@
 'use strict';
 
 module.exports = app => {
-    const { passport } = app;
-    
-    // passport.serializeUser((user, done) => {
-    //     done(null, user.id);
-    // });
+  const { passport } = app;
 
-    // passport.deserializeUser((id, done) => {
-    //     User.findOne({
-    //             _id: id
-    //         }, '-password -salt')
-    //         .exec()
-    //         .then((user) => done(null, user))
-    //         .catch((err) => done(err));
-    // });
+  passport.serializeUser(async (ctx, user) => {
+    return user.id;
+  });
 
-    // require('./strategies/local')();
-    // require('./strategies/facebook')();
-    // require('./strategies/twitter')();
-    // require('./strategies/google')();
+  passport.deserializeUser(async (ctx, id) => {
 
-    const localHandler = async (ctx, { username, password }) => {
-        const getUser = username => {
-            const { User } = ctx.model;
-            return user = User.findOne({
-                username: username
-            }).exec();
-        };
+    try {
+      const user = ctx.model.User.findOne({
+        _id: id,
+      }, '-salt -password -updated -created').exec();
+      return user;
 
-        const existsUser = await getUser(username);
+    } catch (e) {
+      return null;
+    }
 
-        if (!existsUser) {
-            return null;
-        }
+  });
 
-        return existsUser;
+  const localHandler = async (ctx, { username, password }) => {
+    const getUser = username => {
+      return ctx.service.user.getUserByLoginName(username);
     };
+    const user = await getUser(username);
 
-    
-    passport.serializeUser(async(ctx, user) => {
-        return user; 
-        // ctx.session.passport.user 也就是 ctx.user
-        // 如果没有 'return user', '/' 路路径下的 ctx.user 就是 undefined
-    });
+    //  用户不存在
+    if (!user) return null;
 
-    passport.deserializeUser(async (ctx, user) => {
-        return user; 
-        // ctx.session.passport.user 也就是 ctx.user
-        // 如果没有 'return user', '/' 路路径下的 ctx.user 就是 undefined
-    });
+    // 密码不匹配
+    if (!user.authenticate(password)) return null;
+
+    // 验证通过
+    return user;
+
+  };
+
+  passport.verify(async (ctx, user) => {
+    const handler = user.provider === 'local' ? localHandler : '';
+
+    user = await handler(ctx, user);
+
+    return user;
+  });
 };

@@ -9,7 +9,6 @@ module.exports = app => {
   const localStrategy = passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/signin',
-    failureFlash: true,
   });
 
   router.get('/users', user.list);

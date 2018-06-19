@@ -57,5 +57,12 @@ module.exports = appInfo => {
     passwordField: 'password',
   };
 
+  config.sessionMongo = {
+    url: process.env.EGG_MONGODB_URL || 'mongodb://127.0.0.1:27017',
+    db: 'social-login-with-egg',
+    collection: 'sessions',
+    mongooseConnection: null,
+  };
+
   return config;
 };

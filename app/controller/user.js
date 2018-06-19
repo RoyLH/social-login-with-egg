@@ -70,9 +70,6 @@ class UserController extends Controller {
   async create() {
     const { ctx, service } = this;
     const body = ctx.request.body;
-    console.log('lllllllllllllllll');
-    console.log(ctx.csrf);
-    body._csrf = ctx.csrf;
     const user = await service.user.create(body);
 
     ctx.body = {

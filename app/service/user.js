@@ -24,6 +24,13 @@ class UserService extends Service {
 
     return user.save();
   }
+
+  getUserByLoginName(username) {
+    const { User } = this.ctx.model;
+    const user = User.findOne({ username }).exec();
+
+    return user;
+  }
 }
 
 module.exports = UserService;

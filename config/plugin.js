@@ -22,3 +22,8 @@ exports.passportLocal = {
   enable: true,
   package: 'egg-passport-local',
 };
+
+exports.sessionMongo = {
+  enable: true,
+  package: 'egg-session-mongo',
+};
